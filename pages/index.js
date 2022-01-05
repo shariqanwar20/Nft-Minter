@@ -229,7 +229,7 @@ export default function Home() {
         )}
       </div>
       <div className="text-center">
-        <a target="_blank" href={OPENSEA_LINK}>
+        <a target="_blank" href={OPENSEA_LINK} rel="noreferrer">
           <button
             className="animate-gradient-x px-6 py-2 text-md rounded-md font-semibold text-center bg-font1"
             style={{
