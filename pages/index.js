@@ -67,6 +67,7 @@ export default function Home() {
         console.log(accounts);
         setCurrentAccount(accounts[0]);
         setUpEventListener();
+        await totalNftsMinted()
       } else {
         console.log("Not authorized to view accounts!");
       }
