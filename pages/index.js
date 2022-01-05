@@ -2,9 +2,9 @@ import React, { useEffect, useState } from "react";
 import { ethers } from "ethers";
 import contractAbi from "../utils/MyEpicNft.json";
 
-const OPENSEA_LINK = "https://testnets.opensea.io/collection/gokunft-l0r59bhjtk";
+const OPENSEA_LINK = "https://testnets.opensea.io/collection/ironicnft-v2";
 const TOTAL_MINT_COUNT = 50;
-const CONTRACT_ADDRESS = "0xa9DD14b61D61665123781Fe175078152d01b1511";
+const CONTRACT_ADDRESS = "0xdFeaC8D8DE9BBEEC6B90fa1BF008EDADC81740dB";
 
 export default function Home() {
   const [nftsMinted, setNftsMinted] = useState(0);
@@ -145,19 +145,13 @@ export default function Home() {
         signer
       );
 
-      const generateRandomNumber = await contract.getRandomNumber();
-      await generateRandomNumber.wait();
-
-      let tx;
-      contract.on("RandomNumberGenerated", async (randomNum) => {
-        tx = await contract.makeAnEpicNft(randomNum);
-        await tx.wait();
-        console.log("Waiting for Tx to be mined ...");
-        console.log(
-          "View your transaction at: https://rinkeby.etherscan.io/tx/" + tx.hash
-        );
-        setIsMinting(false);
-      });
+      const tx = await contract.makeAnEpicNft();
+      await tx.wait();
+      console.log("Waiting for Tx to be mined ...");
+      console.log(
+        "View your transaction at: https://rinkeby.etherscan.io/tx/" + tx.hash
+      );
+      setIsMinting(false);
     } catch (error) {
       console.log(error);
     }

@@ -5,13 +5,13 @@
 
     console.log("Nft Contract Address => ", nftContract.address);
 
-    // let txn = await nftContract.makeAnEpicNft();
-    // await txn.wait()
-    // console.log("Minted NFT #1");
+    let txn = await nftContract.makeAnEpicNft();
+    await txn.wait()
+    console.log("Minted NFT #1");
 
-    // txn = await nftContract.makeAnEpicNft();
-    // await txn.wait()
-    // console.log("Minted NFT #2");
+    txn = await nftContract.makeAnEpicNft();
+    await txn.wait()
+    console.log("Minted NFT #2");
 
 }
 
